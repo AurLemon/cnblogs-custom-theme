@@ -89,6 +89,7 @@
         color: var(--color-text);
         font-family: var(--font-family);
         background: var(--color-surface-1);
+        min-height: 100vh;
     }
 
     a {
@@ -179,7 +180,7 @@
     #cnblogs_post_body img {
         border-radius: 8px;
         outline: 2px solid;
-        outline-color: transparent;
+        outline-color: var(--border-color-base);
         overflow: hidden;
         transition: all 250ms ease !important;
     }
@@ -247,11 +248,14 @@
 
     #main #mainContent .forFlow .postTitle {
         margin-bottom: 0 !important;
+        word-break: break-all;
     }
 
     #main #mainContent #topics .postTitle {
-        margin-bottom: 1.25rem !important;
+        flex-direction: column-reverse;
+        align-items: flex-start !important;
         gap: 0.125rem !important;
+        margin-bottom: 1.25rem !important;
         word-break: break-all;
     }
 
@@ -260,7 +264,7 @@
     }
 
     #main #mainContent #topics .postTitle a {
-        font-size: 28px !important;
+        font-size: 32px !important;
         font-weight: normal;
     }
 
@@ -341,13 +345,14 @@
                     hsla(var(--color-dark), 0.05);
     }
 
+    /* 侧边栏 */
     #sideBar {
         width: unset;
         min-width: unset;
         padding: 0;
         margin-top: 0;
         overflow: auto;
-        flex: 0 0 120px;
+        min-height: unset;
     }
 
     #sideBar #sideBarMain {
@@ -357,7 +362,13 @@
 
     #sideBar #sideBarMain #blog-sidecolumn, #sideBar #sidebar_categories {
         display: flex;
+        flex-direction: column;
         gap: 0.75rem;
+    }
+
+    #sideBar #sideBarMain #blog-sidecolumn {
+        flex-direction: column-reverse;
+        margin: 0 1rem;
     }
     
     #sideBar #sideBarMain ul {
@@ -365,25 +376,18 @@
         flex-wrap: wrap;
         gap: 5px;
     }
-
-    #sideBar #sideBarMain li {
-        padding: 3px 6px;
-        border-radius: 12px;
-        background: var(--background-color-primary--active);
-        transition: all 250ms ease;
-    }
-
+    
     #sideBar #sideBarMain li a {
-        color: var(--color-text);
+        color: var(--color-surface-0);
+        padding: 3px 9px;
+        border-radius: 12px;
+        background: var(--color-primary);
+        transition: all 250ms ease;
         text-decoration: none;
     }
-
-    #sideBar #sideBarMain li:hover {
-        background: var(--background-dark-0);
-    }
-
+    
     #sideBar #sideBarMain li:hover a {
-        color: var(--color-text--subtle);
+        background: var(--color-text--subtle);
     }
 
     .newsItem, .catListEssay, .catListLink, .catListNoteBook, .catListTag, .catListPostCategory, .catListPostArchive, .catListImageCategory, .catListArticleArchive, .catListView, .catListFeedback, .mySearch, .catListComment, .catListBlogRank, .catList, .catListArticleCategory {
@@ -396,7 +400,7 @@
         gap: 0.75rem;
         padding: 12px 16px;
         margin: 0;
-        border-radius: 12px;
+        border-radius: 24px;
         background-color: var(--background-light-4);
         border: 1px solid var(--background-dark-0);
         backdrop-filter: blur(24px);
@@ -434,6 +438,7 @@
     }
 
     #sideBar #blog-calendar {
+        display: none !important;
         width: auto;
         padding: 8px;
         margin: 0;
@@ -455,31 +460,78 @@
         text-decoration: none;
     }
 
-    #sideBar .input_my_zzk {
+    #sideBar #sidebar_news {
+        display: none;
+    }
+
+    #sideBar .catListTitle {
+        line-height: normal;
+        margin: 0;
+    }
+
+    .catListTag, .catListPostCategory {
+        gap: 3px;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .catListTag .catListTitle, .catListPostCategory .catListTitle {
+        color: var(--color-text--weaken);
+        font-size: 12px !important;
+        font-weight: normal;
+    }
+
+    /* 搜索框 */
+    .sidebar-block .my-search {
+        padding: 0;
+        border: none;
+        background: transparent;
+    }
+
+    .sidebar-block .my-search .catListTitle {
+        display: none;
+    }
+
+    #sidebar_search .input_my_zzk {
         width: 100% !important;
-        margin: 0;
-        border-color: var(--background-dark-0);
-        background-color: var(--color-surface-0);
+        padding: 0;
+        margin: 0 auto;
+        border: none;
+        background-color: transparent;
+        transition: 250ms;
     }
 
-    #sideBar .div_my_zzk {
+    #sidebar_search .div_my_zzk {
         width: 100%;
-        margin: 0;
         justify-content: space-between;
+        max-width: 550px;
+        padding: 4px 12px;
+        margin: 0 auto;
+        outline: 2px solid transparent;
+        border: 1px solid var(--border-color-base);
+        border-radius: 24px;
+        background-color: var(--color-surface-0);
+        transition: 250ms;
     }
 
-    #sideBar #btnZzk {
+    #sidebar_search .div_my_zzk:hover {
+        outline-color: var(--color-primary);
+    }
+
+    #sidebar_search #btnZzk {
         position: static;
         background: none;
     }
 
-    #sideBar #btnZzk-wrapper {
+    #sidebar_search #btnZzk-wrapper {
         position: relative;
         width: 25px;
         height: 25px;
     }
 
-    #sideBar #btnZzk-wrapper::before {
+    #sidebar_search #btnZzk-wrapper::before {
         content: 'search';
         color: var(--color-base);
         font-size: 22px;
@@ -494,17 +546,8 @@
         transition: opacity 150ms ease;
     }
 
-    #sideBar #btnZzk-wrapper:hover::before {
+    #sidebar_search #btnZzk-wrapper:hover::before {
         opacity: 0.8;
-    }
-
-    #sideBar #sidebar_news {
-        display: none;
-    }
-
-    #sideBar .catListTitle {
-        line-height: normal;
-        margin: 0;
     }
     
     #home {
@@ -520,7 +563,6 @@
     #header {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
         padding: 0;
         margin: 0;
     }
@@ -538,14 +580,13 @@
     #blogTitle {
         width: fit-content;
         height: auto;
-        margin: 2.75rem auto;
-        margin-bottom: 1.75rem;
+        margin: 3.25rem auto;
         clear: none;
     }
 
     #blogTitle h1 {
         display: flex;
-        justify-content: cetner;
+        justify-content: center;
         align-items: center;
         gap: 0.125rem;
         color: var(--color-text);
@@ -648,7 +689,6 @@
         color: var(--color-text--subtle);
         margin-top: 0;
         margin-right: 0;
-        user-select: none;
     }
 
     .blogStats .user-info,
@@ -715,8 +755,7 @@
     }
 
     #cnblogs_post_body li::marker {
-        color: var(--color-text--emphasized);
-        font-weight: bold;
+        color: var(--color-text--subtle);
     }
 
     #footer {
@@ -774,6 +813,7 @@
     .postDesc {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 0.5rem;
         color: var(--color-text--weaken);
         line-height: normal;
@@ -783,7 +823,7 @@
 
     .postDesc .post-released-date {
         color: var(--color-text--subtle);
-        padding: 2px 10px;
+        padding: 1px 8px;
         margin-right: auto;
         border: 1px solid var(--border-color-base--darker);
         border-radius: 12px;
@@ -911,10 +951,15 @@
 
     .postTitle .cnblogs-toc-button {
         display: block;
-        padding: 6px;
+        padding: 4px;
         margin: 0;
         border-radius: 50%;
         background: var(--background-dark-0);
+    }
+
+    .postTitle .cnblogs-toc-button::before {
+        width: 1rem;
+        height: 1rem;
     }
 
     .pager {
@@ -926,7 +971,7 @@
         margin: 0;
     }
 
-    .pager a {
+    .pager a, #nav_next_page a {
         color: var(--color-text--subtle);
         font-weight: 600;
         border-color: transparent;
@@ -937,8 +982,9 @@
         transition: 250ms;
     }
 
-    .pager a:hover {
-        background: var(--background-color-primary--hover);
+    .pager a:hover, #nav_next_page a:hover {
+        color: var(--color-surface-0);
+        background: var(--color-primary);
     }
 
     #author_profile_info, #author_profile, #div_digg {
@@ -1088,10 +1134,6 @@
             margin-top: 0.5rem;
         }
 
-        #header {
-            margin-bottom: 2rem;
-        }
-
         #sideBar {
             flex-basis: auto;
         }
@@ -1112,6 +1154,11 @@
             margin-bottom: 0.75rem;
         }
 
+        #blogTitle h1::before {
+            width: 84px;
+            height: 84px;
+        }
+
         #blogTitle h1 a {
             margin-top: 0.25rem;
         }
@@ -1123,6 +1170,16 @@
 
         #navList li:nth-of-type(3), #navList li:nth-of-type(5) {
             display: none;
+        }
+
+        .postDesc {
+            row-gap: 0.25rem;
+            justify-content: center;
+        }
+
+        .postDesc .post-released-date {
+            flex: 0 0 100%;
+            text-align: center;
         }
 
         #footer {
@@ -1229,6 +1286,21 @@ $(document).ready(() => {
     });
 
     /**
+     * 搜索框
+     */
+
+    const observer = new MutationObserver(() => {
+        if ($('#btnZzk').length > 0) {
+            $('#sidebar_search').insertAfter('#header #blogTitle');
+            $('#q').attr('placeholder', '搜索…');
+            $('#btnZzk').wrap('<div id="btnZzk-wrapper"></div>');
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    /**
      * 主页顶部用户数据
      */
     $('.blogStats span').each(function() {
@@ -1245,13 +1317,13 @@ $(document).ready(() => {
 
     $('.blogStats')
         .append(
-            $('<span>', { id: 'garden-age', class: 'user-info' }).text(`入园${ gardenAgeMonths }`)
+            $('<span>', { id: 'garden-age', class: 'user-info' }).text(`园龄 ${ gardenAgeMonths }`)
         )
         .append(
-            $('<span>', { id: 'fans-count', class: 'user-info' }).text(`${ fansCount } 个粉丝`)
+            $('<span>', { id: 'fans-count', class: 'user-info' }).text(`粉丝数 ${ fansCount }`)
         )
         .append(
-            $('<span>', { id: 'follows-count', class: 'user-info' }).text(`关注了 ${ followsCount } 个人`)
+            $('<span>', { id: 'follows-count', class: 'user-info' }).text(`关注数 ${ followsCount }`)
     );
     
     /**
@@ -1260,7 +1332,7 @@ $(document).ready(() => {
     const bannerImageInfo = [
         {
             image_src: "https://aurlemon-1254268741.cos.ap-shanghai.myqcloud.com/images/blogs/banner.webp",
-            title: "Girls Band Cry",
+            title: "#GIRLS BAND CRY",
             description: "我喜欢 GBC。"
         }
     ];
@@ -1292,14 +1364,5 @@ $(document).ready(() => {
         <span class="emphasized">Copyright © 2024 AurLemon Cnblog</span><br>
         博客内文章均采用 CC-BY-SA 4.0 协议，站点样式基于 SimpleMemory 简要修改。欢迎技术同好交流前来交流🤝。
     `);
-
-    const observer = new MutationObserver(() => {
-        if ($('#btnZzk').length > 0) {
-            $('#btnZzk').wrap('<div id="btnZzk-wrapper"></div>');
-            observer.disconnect();
-        }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
 });
 </script>
