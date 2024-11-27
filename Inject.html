@@ -721,15 +721,15 @@
 
     #footer {
         color: var(--color-text--weaken);
-        text-align: left;
-        padding: 0px 12px;
-        padding-bottom: 24px;
+        text-align: center;
+        padding: 0px 1.25rem;
         border: none;
     }
 
     #footer .emphasized {
-        color: var(--color-text--emphasized);
+        color: var(--color-text);
         line-height: 2;
+        font-weight: 600;
     }
 
     pre, code {
@@ -915,6 +915,15 @@
         margin: 0;
         border-radius: 50%;
         background: var(--background-dark-0);
+    }
+
+    .pager {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        line-height: normal;
+        margin: 0;
     }
 
     .pager a {
@@ -1109,7 +1118,7 @@
 
         #navigator {
             flex-direction: column;
-            row-gap: 2px;
+            row-gap: 0.25rem;
         }
 
         #navList li:nth-of-type(3), #navList li:nth-of-type(5) {
@@ -1280,8 +1289,8 @@ $(document).ready(() => {
      * 页面页脚
      */
     $('#footer').html(`
-        <span class="emphasized">Copyright © 2024 AurLemon Blogs</span><br>
-        博客设立于博客园，由博客园提供技术支持。除特殊声明，均采用 CC-BY-SA 4.0 协议。站点样式基于 SimpleMemory 简要修改。代码改变世界，欢迎同好们互相交流！
+        <span class="emphasized">Copyright © 2024 AurLemon Cnblog</span><br>
+        博客内文章均采用 CC-BY-SA 4.0 协议，站点样式基于 SimpleMemory 简要修改。欢迎技术同好交流前来交流🤝。
     `);
 
     const observer = new MutationObserver(() => {
