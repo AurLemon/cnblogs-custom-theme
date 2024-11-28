@@ -1,12 +1,12 @@
 <style type="text/css">
     @font-face {
-        font-family: "Caveat";
-        src: url("https://aurlemon-1254268741.cos.ap-shanghai.myqcloud.com/fonts/Caveat.woff2") format('woff2');
+        font-family: "Inter";
+        src: url("https://aurlemon-1254268741.cos.ap-shanghai.myqcloud.com/fonts/Inter.woff2") format('woff2');
     }
 
     @font-face {
-        font-family: "Inter";
-        src: url("https://aurlemon-1254268741.cos.ap-shanghai.myqcloud.com/fonts/Inter.woff2") format('woff2');
+        font-family: "Caveat";
+        src: url("https://aurlemon-1254268741.cos.ap-shanghai.myqcloud.com/fonts/Caveat.woff2") format('woff2');
     }
 
     @font-face {
@@ -165,9 +165,13 @@
         border: 1px solid var(--border-color-base--darker);
         border-radius: 48px;
         background: var(--background-light-4);
-        box-shadow: 0 0 128px var(--background-dark-0);
+        box-shadow: 0 0 196px var(--background-dark-0);
         backdrop-filter: blur(24px) saturate(1.25);
         -webkit-backdrop-filter: blur(24px) saturate(1.25);
+    }
+
+    .navbar>nav #navbar_login_status {
+        min-width: unset;
     }
 
     #cnblogs_post_body a {
@@ -177,6 +181,10 @@
 
     #cnblogs_post_body .table-wrapper table {
         max-height: unset;
+    }
+
+    .blogpost-body th, .blogpost-body td, .blogpost-body th, .blogpost-body td {
+        border-color: var(--border-color-base--darker);
     }
 
     #cnblogs_post_body img {
@@ -236,7 +244,6 @@
         overflow: auto;
         flex-grow: 1;
         box-shadow: 0 4px 128px var(--border-color-base--lighter);
-        transition: all 250ms ease;
     }
 
     #main #mainContent:hover {
@@ -313,7 +320,7 @@
 
     #main .day a .blog-main-article {
         border-radius: 8px;
-        padding: 0.5rem;
+        padding: 1rem 0.75rem;
         transition: 200ms;
     }
 
@@ -583,6 +590,7 @@
         width: fit-content;
         height: auto;
         margin: 3.25rem auto;
+        margin-bottom: 4rem;
         clear: none;
     }
 
@@ -888,7 +896,7 @@
     }
 
     #cnblogs_post_body h2 {
-        border-bottom: 1px solid var(--background-dark-0);
+        border-bottom: 1px solid var(--color-surface-4);
     }
 
     #cnblogs_post_body h3 {
@@ -1009,11 +1017,14 @@
         flex-wrap: wrap;
     }
 
-    #BlogPostCategory {
+    #BlogPostCategory, #EntryTag {
         color: var(--color-text--weaken);
+        font-size: inherit;
     }
 
-    #BlogCollection a:link, #BlogCollection a:visited, #BlogCollection a:active, #BlogPostCategory a:link, #BlogPostCategory a:visited, #BlogPostCategory a:active {
+    #BlogPostCategory a, #BlogCollection a,
+    #BlogCollection a:link, #BlogCollection a:visited, #BlogCollection a:active, #BlogPostCategory a:link, #BlogPostCategory a:visited, #BlogPostCategory a:active,
+    #EntryTag a:link, #EntryTag a:visited, #EntryTag a:active, #EntryTag a:link, #EntryTag a:visited, #EntryTag a:active {
         color: var(--color-text--subtle);
         background: var(--background-color-primary--hover);
     }
